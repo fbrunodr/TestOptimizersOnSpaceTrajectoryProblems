@@ -1,7 +1,6 @@
 from objective_functions import *
 from pymoo.core.problem import Problem
 import numpy as np
-from multiprocessing import Pool    
 
 
 class Jupiter1(Problem):
@@ -14,13 +13,10 @@ class Jupiter1(Problem):
         )
 
     def _evaluate(self, x, out, *args, **kwargs):
-        pool = Pool(processes=8)
         if self.n_obj == 1:
-            out["F"] = pool.map(jupiter1_single_objective, x)
+            out["F"] = np.apply_along_axis(jupiter1_single_objective, 1, x)
         elif self.n_obj == 2:
-            out["F"] = pool.map(jupiter1_multi_objective, x)
-        pool.close()
-        pool.join()
+            out["F"] = np.apply_along_axis(jupiter1_multi_objective, 1, x)
 
 
 class Jupiter2(Problem):
@@ -33,13 +29,10 @@ class Jupiter2(Problem):
         )
 
     def _evaluate(self, x, out, *args, **kwargs):
-        pool = Pool(processes=8)
         if self.n_obj == 1:
-            out["F"] = pool.map(jupiter2_single_objective, x)
+            out["F"] = np.apply_along_axis(jupiter2_single_objective, 1, x)
         elif self.n_obj == 2:
-            out["F"] = pool.map(jupiter2_multi_objective, x)
-        pool.close()
-        pool.join()
+            out["F"] = np.apply_along_axis(jupiter2_multi_objective, 1, x)
 
 
 class Cassini1(Problem  ):
@@ -52,10 +45,7 @@ class Cassini1(Problem  ):
         )
 
     def _evaluate(self, x, out, *args, **kwargs):
-        pool = Pool(processes=8)
         if self.n_obj == 1:
-            out["F"] = pool.map(cassini1_single_objective, x)
+            out["F"] = np.apply_along_axis(cassini1_single_objective, 1, x)
         elif self.n_obj == 2:
-            out["F"] = pool.map(cassini1_multi_objective, x)
-        pool.close()
-        pool.join()
+            out["F"] = np.apply_along_axis(cassini1_multi_objective, 1, x)

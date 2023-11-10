@@ -62,16 +62,16 @@ def _solve_using_pygmo(problem: str, algorithm: str, optimize_end_time: bool) ->
     elif problem == problems[2]:
         problem = pg.problem(pygmo_problems.Cassini1(optimize_end_time))
 
-    population = pg.population(problem, size = 256)
+    population = pg.population(problem, size = 128)
 
     if algorithm == 'SA':
         algorithm = pg.algorithm(pg.simulated_annealing())
     elif algorithm == 'ABC':
-        algorithm = pg.algorithm(pg.bee_colony())
+        algorithm = pg.algorithm(pg.bee_colony(gen=64))
     elif algorithm == 'MOPSO':
-        algorithm = pg.algorithm(pg.nspso())
+        algorithm = pg.algorithm(pg.nspso(gen=128))
     elif algorithm == 'MHACO':
-        algorithm = pg.algorithm(pg.maco())
+        algorithm = pg.algorithm(pg.maco(gen=128))
 
     population = algorithm.evolve(population)
     if not optimize_end_time:
