@@ -119,7 +119,7 @@ double jupiter1(const vector<double>& x, std::vector<double>& rp)
 
 double jupiter2(const vector<double>& x, std::vector<double>& rp)
 {
-	const int DIM = 4;
+	const int DIM = 3;
 	vector<double> Delta_V(DIM);
 	rp.resize(DIM-2);
 	vector<double> t(DIM);
@@ -129,11 +129,11 @@ double jupiter2(const vector<double>& x, std::vector<double>& rp)
 	problem.type = total_DV_orbit_insertion;
 
 
-	int sequence_[DIM] = {3,4,4,5}; // sequence of planets
+	int sequence_[DIM] = {3,4,5}; // sequence of planets
 	vector<int> sequence(DIM);
 	problem.sequence.insert(problem.sequence.begin(), sequence_, sequence_+DIM);
 
-	const int rev_[DIM] = {0,0,0,0}; // sequence of clockwise legs
+	const int rev_[DIM] = {0,0,0}; // sequence of clockwise legs
 	vector<int> rev(DIM);
 	problem.rev_flag.insert(problem.rev_flag.begin(), rev_, rev_+DIM);
 

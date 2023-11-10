@@ -15,7 +15,7 @@ class Jupiter1:
             return [jupiter1_single_objective(x)]
 
     def get_bounds(self):
-        return ([9131.5, 200.0],[9495.5, 1500.0])
+        return ([9131.5, 300.0],[9495.5, 3000.0])
 
 
 class Jupiter2:
@@ -32,7 +32,7 @@ class Jupiter2:
             return [jupiter2_single_objective(x)]
 
     def get_bounds(self):
-        return ([9131.5, 50.0, 50.0, 50.0],[10591.5, 1000.0, 1000.0, 1500.0])
+        return ([9131.5, 50.0, 300.0],[10958, 1000.0, 3000.0])
 
 
 class Cassini1:

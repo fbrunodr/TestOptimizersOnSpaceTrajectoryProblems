@@ -17,7 +17,7 @@ if __name__ == '__main__':
         best_known = 13.0
         problem = pymoo_problems.Jupiter1(False)
     elif problem == 'Jupiter Hard':
-        best_known = 9.3
+        best_known = 9.5
         problem = pymoo_problems.Jupiter2(False)
     elif problem == 'Cassini 1':
         best_known = 5.1

@@ -5,13 +5,13 @@
 int main(int argc, char* argv[]){
 	using namespace std;
 
-	if(argc != 5){
+	if(argc != 4){
 		cerr << "Wrong number of parameters" << endl;
 		return 1;
 	}
 
 	//Put here your solution
-	vector<double> X(4);
+	vector<double> X(3);
 	for(int i = 1; i < argc; i++)
 		X[i-1] = stold(argv[i]);
 	vector<double> vp;

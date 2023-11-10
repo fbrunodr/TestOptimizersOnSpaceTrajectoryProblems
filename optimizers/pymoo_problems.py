@@ -8,8 +8,8 @@ class Jupiter1(Problem):
         number_of_objectives = 2 if include_end_time else 1
         super().__init__(
             n_var=2, n_obj=number_of_objectives, n_constr=0,
-            xl=np.array([9131.5, 200.0]),
-            xu=np.array([9495.5, 1500.0])
+            xl=np.array([9131.5, 300.0]),
+            xu=np.array([9495.5, 3000.0])
         )
 
     def _evaluate(self, x, out, *args, **kwargs):
@@ -23,9 +23,9 @@ class Jupiter2(Problem):
     def __init__(self, include_end_time=False):
         number_of_objectives = 2 if include_end_time else 1
         super().__init__(
-            n_var=4, n_obj=number_of_objectives, n_constr=0,
-            xl=np.array([9131.5, 50.0, 50.0, 50.0]),
-            xu=np.array([10591.5, 1000.0, 1000.0, 1500.0])
+            n_var=3, n_obj=number_of_objectives, n_constr=0,
+            xl=np.array([9131.5, 50.0, 300.0]),
+            xu=np.array([10958, 1000.0, 3000.0])
         )
 
     def _evaluate(self, x, out, *args, **kwargs):
