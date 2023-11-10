@@ -72,7 +72,7 @@ def plot_best_delta_v(min_costs: [float], algorithm_name: str, problem_name: str
     elif problem_name == 'Jupiter Easy':
         intervals = list(np.arange(12.9, 20.01, 0.1))
     elif problem_name == 'Jupiter Hard':
-        intervals = list(np.arange(10.0, 20.01, 0.1))
+        intervals = list(np.arange(9.2, 20.01, 0.1))
     bar_plot_intervals(
         min_costs,
         intervals,
