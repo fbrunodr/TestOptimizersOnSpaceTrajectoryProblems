@@ -96,7 +96,7 @@ def plot_pareto_front(points: [[float]], algorithm_name: str, problem_name: str)
         deltaV = [point[0] for point in best_solution_known]
         tf = [point[1] for point in best_solution_known]
         plt.scatter(deltaV, tf, c='red', s=1.0)
-        plt.legend([f'{problem_name} solutions', 'Best known solution'])
+        plt.legend([f'{algorithm_name} solutions', 'Best known solution'])
 
     plt.xlabel('$\Delta v$')
     plt.ylabel('$t_f$')
