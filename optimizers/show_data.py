@@ -2,23 +2,7 @@ from pathlib import Path
 from sys import stdin
 import matplotlib.pyplot as plt
 import numpy as np
-from globals import *
-
-
-def get_problem_name(filePath: str) -> str:
-    problems = ['Jupiter Easy', 'Jupiter Hard', 'Cassini 1']
-    for problem in problems:
-        if problem.replace(' ', '_').lower() in filePath:
-            return problem
-    return ''
-
-
-def get_algorithm_name(filePath: str) -> str:
-    # reversed is here to avoid NSGA-II being mistaken for GA and MOPSO for PSO
-    for algorithm in reversed(algorithms):
-        if algorithm.replace('/', '').lower() in filePath:
-            return algorithm
-    return ''
+from aux_functions import get_algorithm_name, get_problem_name
 
 
 def bar_plot_intervals(data: [float], intervals_lower_bound: [float], title: str, x_label: str, y_label: str) -> None:
@@ -97,13 +81,26 @@ def show_single_objective_data(filePath: str) -> None:
     plot_best_delta_v(min_costs, algorithm_name, problem_name)
 
 
-def plot_points_2d(points: [[float]], title: str) -> None:
+def plot_pareto_front(points: [[float]], algorithm_name: str, problem_name: str) -> None:
+    best_solution_known = None
+    file_name = f"data/{problem_name.replace(' ', '_').lower()}_pareto_points.txt"
+    if Path.exists(Path(file_name)):
+        with open(file_name) as file:
+            best_solution_known = eval( file.readline() )
+
     deltaV = [point[0] for point in points]
     tf = [point[1] for point in points]
     plt.scatter(deltaV, tf, alpha=1/5)
+
+    if best_solution_known is not None:
+        deltaV = [point[0] for point in best_solution_known]
+        tf = [point[1] for point in best_solution_known]
+        plt.scatter(deltaV, tf, c='red', s=1.0)
+        plt.legend([f'{problem_name} solutions', 'Best known solution'])
+
     plt.xlabel('$\Delta v$')
     plt.ylabel('$t_f$')
-    plt.title(title)
+    plt.title(f'Union of solutions of {algorithm_name} on {problem_name} after 100 runs')
     plt.show()
 
 
@@ -126,7 +123,7 @@ def show_two_objective_data(filePath: str) -> None:
     algorithm_name = get_algorithm_name(filePath)
     problem_name = get_problem_name(filePath)
     plot_evals(n_evals, algorithm_name, problem_name)
-    plot_points_2d(pareto_points, f'Union of solutions of {algorithm_name} on {problem_name} after {len(n_evals)} runs')
+    plot_pareto_front(pareto_points, algorithm_name, problem_name)
     plot_best_delta_v(min_costs, algorithm_name, problem_name)
 
 
