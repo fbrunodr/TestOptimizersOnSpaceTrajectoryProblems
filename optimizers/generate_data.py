@@ -1,17 +1,7 @@
 from sys import stdin
 from globals import problems, algorithms
 from get_best_and_evals import get_best_and_evals
-
-
-def get_number_input_from_options(valid_options: [int]) -> int:
-    try:
-        number = int(stdin.readline())
-        if number not in valid_options:
-            raise ValueError('Number not in options')
-        return number
-    except:
-        print(f'Invalid input... try again.')
-        return get_number_input_from_options(valid_options)
+from aux_functions import get_number_input_from_options
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 from globals import problems
-from generate_data import get_number_input_from_options
+from aux_functions import get_number_input_from_options
 import pymoo_problems
 from pymoo.algorithms.moo.nsga2 import NSGA2
 from pymoo.optimize import minimize
