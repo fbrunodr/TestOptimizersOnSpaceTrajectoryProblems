@@ -42,7 +42,7 @@ def bar_plot_intervals(data: [float], intervals_lower_bound: [float], title: str
 def plot_evals(n_evals: [int], algorith_name: str, problem_name: str) -> None:
     bar_plot_intervals(
         [n_eval / 1000 for n_eval in n_evals],
-        list(np.arange(0, 30.5, 0.5)),
+        list(np.arange(0, 30.5, 1.0)),
         f'Number of evaluations of {algorith_name} on {problem_name}',
         'Thousands of evaluations',
         'Percentage of runs'
@@ -52,11 +52,11 @@ def plot_evals(n_evals: [int], algorith_name: str, problem_name: str) -> None:
 def plot_best_delta_v(min_costs: [float], algorithm_name: str, problem_name: str) -> None:
     intervals = None
     if problem_name == 'Cassini 1':
-        intervals = list(np.arange(5.0, 25.1, 0.25))
+        intervals = list(np.arange(5.0, 25.1, 0.5))
     elif problem_name == 'Jupiter Easy':
-        intervals = list(np.arange(12.9, 20.01, 0.1))
+        intervals = list(np.arange(12.9, 20.01, 0.25))
     elif problem_name == 'Jupiter Hard':
-        intervals = list(np.arange(9.4, 20.01, 0.1))
+        intervals = list(np.arange(9.4, 20.01, 0.25))
     bar_plot_intervals(
         min_costs,
         intervals,
