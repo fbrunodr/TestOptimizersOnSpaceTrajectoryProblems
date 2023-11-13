@@ -2,7 +2,7 @@
 
 This repo does exactly what the name suggests.
 
-The algorithms tested are not a exhaustive test of all available good algorithms. Rather, I performed a literature review, chose a subset A of algorithms to test and finally chose the ones I could find a good implementation available (of course what is a good implementation is biased, fee free to expand this work using other algorithms).
+The algorithms tested are not a exhaustive test of all available good algorithms. Rather, I performed a literature review, chose a subset of algorithms to test and finally chose the ones I could find a good implementation available (of course what is a good implementation is biased, feel free to expand this work using other algorithms).
 
 The algorithms were tested only on three distinct problems:
 
