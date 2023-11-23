@@ -10,6 +10,9 @@ if __name__ == '__main__':
     x, y = np.meshgrid(x_values, y_values)
     z = np.array([jupiter1_single_objective([x_i, y_i]) for x_i, y_i in zip(np.ravel(x), np.ravel(y))])
     z = z.reshape(x.shape)
+    min_value_index = np.argmin(z)
+    min_x = np.ravel(x)[min_value_index]
+    min_y = np.ravel(y)[min_value_index]
     # Plot the heatmap
     plt.figure(figsize=(6, 5))
     contour = plt.contourf(x, y, z, 50, cmap='turbo')
@@ -18,4 +21,6 @@ if __name__ == '__main__':
     plt.title('Heatmap of the Function Jupiter Easy')
     plt.xlabel('$T_0$')
     plt.ylabel('$\Delta T_1$')
+    plt.scatter(min_x, min_y, color='white', marker='*', s=100)  # s is the size of the star
+    print(np.min(z))
     plt.show()
